@@ -126,7 +126,7 @@
 				var code = (e.keyCode ? e.keyCode : e.which);
 				var typed = String.fromCharCode(code);
 				var functional = false;
-				var str = obj.val();
+				var str = obj.html();
 				var newValue = price_format(str+typed);
 				
 				// allow key numbers, 0 to 9
@@ -145,7 +145,7 @@
 				{
 					e.preventDefault();
 					e.stopPropagation();
-					if (str!=newValue) obj.val(newValue);
+					if (str!=newValue) obj.html(newValue);
 				}
 
 			}
@@ -153,16 +153,16 @@
 			// inster formatted price as a value of an input field
 			function price_it () 
 			{
-				var str = obj.val();
+				var str = obj.html();
 				var price = price_format(str);
-				if (str != price) obj.val(price);
+				if (str != price) obj.html(price);
 			}
 			
 			// Add prefix on focus
 			function add_prefix()
 			{
-				var val = obj.val();
-				obj.val(prefix + val);
+				var val = obj.html();
+				obj.html(prefix + val);
 			}
 			
 			// Clear prefix on blur if is set to true
@@ -170,8 +170,8 @@
 			{
 				if($.trim(prefix) != '' && clearPrefix)
 				{
-					var array = obj.val().split(prefix); 
-					obj.val(array[1]);
+					var array = obj.html().split(prefix); 
+					obj.html(array[1]);
 				}
 			}
 			
@@ -194,7 +194,7 @@
 			}
 			
 			// If value has content
-			if ($(this).val().length>0)
+			if ($(this).html().length>0)
 			{
 				price_it();
 				clear_prefix();
